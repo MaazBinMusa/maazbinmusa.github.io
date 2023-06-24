@@ -24,7 +24,7 @@
 
 
 .plot{
-    width: 100%;
+    width: 150%;
     float: right;
     padding-bottom: 20px;
 }
@@ -57,7 +57,7 @@
 }
 
 .name{
-    font-family: 'Bagel Fat One';
+    font-family: 'Patua One';
     font-size: 50px;
     text-align: center;
     line-height: 0%;
