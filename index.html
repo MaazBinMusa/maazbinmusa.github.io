@@ -86,12 +86,22 @@
             background: white;
         }
 
-        .project-image {
-            width: auto;
-            height: auto;
-            background: #ddd;
+        /* Image container div */
+        .project-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 1rem;
             border: 1px solid var(--golden);
+            padding: 1rem;
+            background: white;
+        }
+
+        /* Project image styling */
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         h1, h2, h3 {
@@ -136,7 +146,7 @@
         </div>
 
         <div class="profile-section">
-            <img src="res/dp.png" alt="Profile" class="profile-image">
+            <img src="/api/placeholder/200/200" alt="Profile" class="profile-image">
             <div>
                 <p>Welcome to my academic portfolio. I'm focusing on [Your Research Area] with particular interest in [Specific Topics]. Currently working under the supervision of Prof. [Supervisor Name].</p>
                 <div class="contact-info">
@@ -170,7 +180,9 @@
         </div>
 
         <div class="research-project">
-            <img src="projects/res/c3pa-main.png" alt="Project 1" class="project-image center">
+            <div class="project-image-container">
+                <img src="projects/res/c3pa-main.png" alt="Project 1" class="project-image">
+            </div>
             <h2>Project Title 1</h2>
             <p><strong>Status:</strong> Ongoing</p>
             <p><strong>Collaborators:</strong> Prof. Smith, Dr. Johnson</p>
@@ -178,7 +190,9 @@
         </div>
 
         <div class="research-project">
-            <img src="/api/placeholder/800/200" alt="Project 2" class="project-image">
+            <div class="project-image-container">
+                <img src="/api/placeholder/800/200" alt="Project 2" class="project-image">
+            </div>
             <h2>Project Title 2</h2>
             <p><strong>Status:</strong> Completed</p>
             <p><strong>Collaborators:</strong> Prof. Williams</p>
