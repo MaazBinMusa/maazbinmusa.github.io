@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Doe - Computer Science PhD Student</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <!-- Import Lucide Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
     <style>
-        /* Previous styles remain the same until events styling */
-
+        /* Previous styles remain the same until .events */
         :root {
             --gold: #b8860b;
             --gold-light: #daa520;
@@ -17,7 +17,6 @@
             --text: #333333;
         }
 
-        /* Previous body, nav, container, profile styles remain same */
         body {
             font-family: 'Courier New', Courier, monospace;
             line-height: 1.6;
@@ -56,6 +55,9 @@
             padding: 0.3rem 1rem;
             border: 1px solid var(--gold);
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         nav a:hover {
@@ -74,44 +76,36 @@
             position: relative;
         }
 
-        /* Updated events styling */
-        .events ul li {
+        /* Updated events styling with icon support */
+        .events-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .event-item {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
             padding: 0.5rem;
-            border: 1px solid rgba(184, 134, 11, 0.2);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            border-color: var(--gold);
             background: rgba(184, 134, 11, 0.05);
         }
 
-        .events ul li i {
+        .event-icon {
             color: var(--gold);
             flex-shrink: 0;
         }
 
-        .update-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--gold);
-            border-radius: 4px;
-            padding: 4px;
-        }
-
         /* Project image styling */
-        .project {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .project-header {
+        .project-content {
             display: flex;
             gap: 2rem;
-            align-items: start;
+            align-items: flex-start;
         }
 
         .project-image {
@@ -123,25 +117,14 @@
             object-fit: cover;
         }
 
-        .project-content {
+        .project-text {
             flex: 1;
         }
 
-        /* Rest of the previous styles remain same */
-        .hidden {
-            display: none;
-        }
-
-        code {
-            color: var(--gold);
-            font-family: 'Courier New', Courier, monospace;
-            background: rgba(184, 134, 11, 0.1);
-            padding: 0 0.3rem;
-            border-radius: 3px;
-        }
+        /* Retain other existing styles... */
 
         @media (max-width: 768px) {
-            .project-header {
+            .project-content {
                 flex-direction: column;
             }
             .project-image {
@@ -149,17 +132,34 @@
                 height: 200px;
             }
         }
+
+        /* Icon container style */
+        .icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: rgba(184, 134, 11, 0.1);
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body>
     <nav>
-        <a href="#home" onclick="showPage('home')">[HOME]</a>
-        <a href="#research" onclick="showPage('research')">[RESEARCH]</a>
+        <a href="#home" onclick="showPage('home')">
+            <i data-lucide="home"></i>
+            [HOME]
+        </a>
+        <a href="#research" onclick="showPage('research')">
+            <i data-lucide="flask"></i>
+            [RESEARCH]
+        </a>
     </nav>
 
     <!-- Home Page -->
     <div id="home" class="container">
-        <!-- Previous profile section remains same -->
         <div class="profile">
             <img src="/api/placeholder/200/200" alt="Profile photo">
             <div>
@@ -177,40 +177,38 @@
 
         <div class="events">
             <h2>System Updates</h2>
-            <ul>
-                <li>
-                    <div class="update-icon">
+            <ul class="events-list">
+                <li class="event-item">
+                    <div class="icon-container">
                         <i data-lucide="file-check"></i>
                     </div>
-                    <div>
-                        <code>10/2024:</code> Paper accepted at ICML 2024
-                    </div>
+                    <span><code>10/2024:</code> Paper accepted at ICML 2024</span>
                 </li>
-                <li>
-                    <div class="update-icon">
+                <li class="event-item">
+                    <div class="icon-container">
                         <i data-lucide="presentation"></i>
                     </div>
-                    <div>
-                        <code>09/2024:</code> Presenting at Graduate Symposium
-                    </div>
+                    <span><code>09/2024:</code> Presenting at Graduate Symposium</span>
                 </li>
-                <li>
-                    <div class="update-icon">
+                <li class="event-item">
+                    <div class="icon-container">
                         <i data-lucide="rocket"></i>
                     </div>
-                    <div>
-                        <code>08/2024:</code> Initialized new research project: AI Ethics
-                    </div>
+                    <span><code>08/2024:</code> Initialized new research project: AI Ethics</span>
                 </li>
             </ul>
         </div>
 
-        <!-- Previous contact section remains same -->
         <div class="contact">
             <h2>Contact Protocols</h2>
-            <p><code>email:</code> john.doe@university.edu<br>
-            <code>location:</code> /Computer-Science-Building/Room-420<br>
-            <code>github:</code> github.com/johndoe</p>
+            <p>
+                <span class="icon-container"><i data-lucide="mail"></i></span>
+                <code>email:</code> john.doe@university.edu<br>
+                <span class="icon-container"><i data-lucide="map-pin"></i></span>
+                <code>location:</code> /Computer-Science-Building/Room-420<br>
+                <span class="icon-container"><i data-lucide="github"></i></span>
+                <code>github:</code> github.com/johndoe
+            </p>
         </div>
     </div>
 
@@ -219,43 +217,43 @@
         <h1>Research Projects</h1>
         
         <div class="project">
-            <div class="project-header">
-                <img src="/api/placeholder/400/300" alt="AI in Healthcare" class="project-image">
-                <div class="project-content">
-                    <h2>Project: Explainable AI in Healthcare</h2>
+            <h2>Project: Explainable AI in Healthcare</h2>
+            <div class="project-content">
+                <img src="/api/placeholder/200/150" alt="AI Healthcare Project" class="project-image">
+                <div class="project-text">
                     <p><code>runtime:</code> 2023 - Present</p>
                     <p><code>description:</code> {<br>
                     &nbsp;&nbsp;&nbsp;Developing novel approaches to make deep learning models<br>
                     &nbsp;&nbsp;&nbsp;more interpretable in medical diagnosis applications.<br>
                     }</p>
+                    <p><code>publications:</code> [</p>
+                    <ul>
+                        <li>"Understanding Neural Networks in Medical Imaging" - ICML 2024</li>
+                        <li>"Visual Explanations for Medical AI" - Under Review at Nature Machine Intelligence</li>
+                    </ul>
+                    <p>]</p>
                 </div>
             </div>
-            <p><code>publications:</code> [</p>
-            <ul>
-                <li>"Understanding Neural Networks in Medical Imaging" - ICML 2024</li>
-                <li>"Visual Explanations for Medical AI" - Under Review at Nature Machine Intelligence</li>
-            </ul>
-            <p>]</p>
         </div>
 
         <div class="project">
-            <div class="project-header">
-                <img src="/api/placeholder/400/300" alt="Efficient Deep Learning" class="project-image">
-                <div class="project-content">
-                    <h2>Project: Efficient Deep Learning</h2>
+            <h2>Project: Efficient Deep Learning</h2>
+            <div class="project-content">
+                <img src="/api/placeholder/200/150" alt="Efficient ML Project" class="project-image">
+                <div class="project-text">
                     <p><code>runtime:</code> 2022 - 2023</p>
                     <p><code>description:</code> {<br>
                     &nbsp;&nbsp;&nbsp;Research on model compression and optimization techniques<br>
                     &nbsp;&nbsp;&nbsp;for deploying deep learning models on resource-constrained devices.<br>
                     }</p>
+                    <p><code>achievements:</code> "5x reduction in model size while maintaining accuracy"</p>
+                    <p><code>publications:</code> [</p>
+                    <ul>
+                        <li>"Lightweight Neural Networks for Edge Devices" - NeurIPS 2023</li>
+                    </ul>
+                    <p>]</p>
                 </div>
             </div>
-            <p><code>achievements:</code> "5x reduction in model size while maintaining accuracy"</p>
-            <p><code>publications:</code> [</p>
-            <ul>
-                <li>"Lightweight Neural Networks for Edge Devices" - NeurIPS 2023</li>
-            </ul>
-            <p>]</p>
         </div>
     </div>
 
@@ -266,7 +264,6 @@
             });
             document.getElementById(pageId).classList.remove('hidden');
         }
-
         // Initialize Lucide icons
         lucide.createIcons();
     </script>
